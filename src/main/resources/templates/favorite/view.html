@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<ul>
+    <li th:each="checklist : ${checklists}" th:text="${checklist.name}"></li>
+</ul>
+
+<p th:unless="${checklists.size()}">No checklists yet</p>
+
+
+<p><a th:href="'/favorite/add-item/' + ${favoriteId}">Add Checklist</a></p>
+
+</body>
+</html>

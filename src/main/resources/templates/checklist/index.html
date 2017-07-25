@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<p th:unless="${checklists} and ${checklists.size()}">no checklists :(</p>
+
+
+<table class="table">
+
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Category</th>
+    </tr>
+
+    <tr th:each="checklist : ${checklists}">
+        <td th:text="${checklist.name}"></td>
+        <td th:text="${checklist.description}"></td>
+        <td th:text="${checklist.category.name}"></td>
+    </tr>
+
+</table>
+
+<nav th:fragment="navigation">
+    <a href="/checklist/add">Add</a> |
+    <a href="/checklist/remove">Remove</a>
+</nav>
+
+</body>
+</html>
